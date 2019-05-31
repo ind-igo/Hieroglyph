@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <title>Hierogly.ph</title>
+</head>
+<body>
+  <div class="container">
+    <h1 align="center">Hierogly.ph</h1>
+    <form id="url-form">
+      <div>
+        <label for="title">Youtube URL</label>
+        <input type="text" id="youtube-url" class="u-full-width">
+      </div>
+      <div>
+        <input type="submit" value="Submit" class="u-full-width" id="button">
+      </div>
+    </form>
+    <div>
+    </div>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Youtube Transcript</th>
+          <th><button style="float:right" id="button2" type="button">Show Youtube Video</button></th>
+        </tr>
+      </thead>
+      <tbody id="transcript"></tbody>
+    </table>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
