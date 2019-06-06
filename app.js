@@ -11,15 +11,15 @@ async function postApi(url ='', data = {}) {
 };
 
 function getVideoId(url_){
-  var ID = '';
+    var ID = '';
   url_ = url_.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
   if(url_[2] !== undefined) {
     ID = url_[2].split(/[^0-9a-z_\-]/i);
     ID = ID[0];
-  }
+}
   else {
     ID = url_;
-  }
+    }
     return ID;
 }
 
@@ -31,21 +31,18 @@ function showTranscript(data) {
 };
 
 function showVideo(url_) {
-    let iframe = document.createElement('iframe');
+    let iframe = document.getElementById('youtubeiframe');
     let rightUrl = getVideoId(url_)
     //this is all stuff to mimic the Youtube Embed format
     iframe.src = `https://www.youtube.com/embed/${rightUrl}`
     iframe.frameBorder = '0'
-    iframe.width = '560';
-    iframe.height = '315';
+    iframe.width = '900';
+    iframe.height = '560';
     iframe.margin = 'auto';
+    iframe.style.display = 'inline';
     iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
     console.log(iframe);
     
-    //select the dom - use container
-    let container = document.querySelector('.container')
-    container.insertBefore(iframe, container.childNodes[6]);
-
 }
 
 //declare the global var
