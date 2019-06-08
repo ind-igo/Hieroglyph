@@ -21,13 +21,22 @@
     thead {
       margin: auto;
     }
+    p {
+      text-align: center;
+      align-self: center;
+      justify-self: center;
+    }
 
   </style>
   <title>Hieroglyph</title>
+
 </head>
 <body>
   <div class="container">
-    <h1 style="text-align:center;">Hieroglyph</h1>
+    <h2 style="text-align:center;">Hieroglyph</h2>
+    <div class="wrapper">
+        <p class="u-full-width">Insert Youtube video url below, click submit, then the transcript will appear below</p>
+    </div>
     <form id="url-form">
       <div>
         <input type="text" id="youtube-url" placeholder="Insert YouTube URL" class="u-full-width">
@@ -37,7 +46,7 @@
       </div>
     </form>
     <div id="wrapper">
-        <iframe src="https://www.youtube.com/embed/otHnRgZUs2I" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
     </div>
     <table class="u-full-width">
       <thead>

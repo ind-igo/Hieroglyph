@@ -53,8 +53,15 @@ function hideVideo() {
   buttonState -= 1;
 }
 
+function showError(){
+  document.getElementById('youtube-url').style.color ="red";
+  document.getElementById('button').style.color ="red";
+}
+
 //declare button state
 let buttonState = 0;
+
+
 
 //create event listener for button
 document.getElementById('button').addEventListener('click', function(e){
@@ -70,6 +77,15 @@ document.getElementById('button').addEventListener('click', function(e){
 
     e.preventDefault();
 });
+
+// let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
+// let regexState = youtubeRe.test(document.getElementById('youtube-url').value);
+// console.log(regexState);
+
+// if (regexState === false) {
+//   showError()
+// } 
+
 
 //second button that inserts youtube url into the dom.... 
 document.getElementById('button2').addEventListener('click', function(e){
