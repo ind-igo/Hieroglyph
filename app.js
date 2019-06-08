@@ -30,6 +30,7 @@ function showTranscript(data) {
     tbody.innerHTML = data;
 };
 
+//show video and move state +1
 function showVideo(url_) {
     let iframe = document.getElementById('youtubeiframe');
     let rightUrl = getVideoId(url_)
@@ -39,12 +40,12 @@ function showVideo(url_) {
     iframe.width = '500';
     iframe.height = '316';
     iframe.margin = 'auto';
-    iframe.style.display = 'inline';
+    iframe.style.display = 'inline-block';
     iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
     document.getElementById('button2').innerText = "Hide Youtube Video"
     buttonState += 1;
 }
-
+//hide video and move state down 1
 function hideVideo() {
   let iframe = document.getElementById('youtubeiframe');
   iframe.style.display = 'none';
@@ -52,10 +53,8 @@ function hideVideo() {
   buttonState -= 1;
 }
 
-
-//declare the global var
-const url = document.getElementById('youtube-url').value;
-console.log(url);
+//declare button state
+let buttonState = 0;
 
 //create event listener for button
 document.getElementById('button').addEventListener('click', function(e){
@@ -71,8 +70,6 @@ document.getElementById('button').addEventListener('click', function(e){
 
     e.preventDefault();
 });
-
-let buttonState = 0;
 
 //second button that inserts youtube url into the dom.... 
 document.getElementById('button2').addEventListener('click', function(e){
