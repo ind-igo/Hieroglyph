@@ -36,14 +36,22 @@ function showVideo(url_) {
     //this is all stuff to mimic the Youtube Embed format
     iframe.src = `https://www.youtube.com/embed/${rightUrl}`
     iframe.frameBorder = '0'
-    iframe.width = '900';
-    iframe.height = '560';
+    iframe.width = '500';
+    iframe.height = '316';
     iframe.margin = 'auto';
     iframe.style.display = 'inline';
     iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-    console.log(iframe);
-    
+    document.getElementById('button2').innerText = "Hide Youtube Video"
+    buttonState += 1;
 }
+
+function hideVideo() {
+  let iframe = document.getElementById('youtubeiframe');
+  iframe.style.display = 'none';
+  document.getElementById('button2').innerText = "Show Youtube Video"
+  buttonState -= 1;
+}
+
 
 //declare the global var
 const url = document.getElementById('youtube-url').value;
@@ -59,14 +67,21 @@ document.getElementById('button').addEventListener('click', function(e){
     postApi('https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe', urlJson)
         .then(data => showTranscript(data.body))
         .catch(err => console.log(err));
+    
 
     e.preventDefault();
 });
 
+let buttonState = 0;
+
 //second button that inserts youtube url into the dom.... 
 document.getElementById('button2').addEventListener('click', function(e){
     let url = document.getElementById('youtube-url').value;
-    showVideo(url);
-    
+    if (buttonState === 0){ 
+      showVideo(url);
+    } else {
+      hideVideo()
+    };
+    console.log(buttonState);
     e.preventDefault();
 });

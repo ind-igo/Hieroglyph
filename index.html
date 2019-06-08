@@ -10,6 +10,13 @@
       display:none;
       margin:0 auto;
     }
+    tbody {
+      text-align:justify;
+    }
+    thead {
+      margin: auto;
+    }
+
   </style>
   <title>Hieroglyph</title>
 </head>
@@ -21,7 +28,7 @@
         <input type="text" id="youtube-url" placeholder="Insert YouTube URL" class="u-full-width">
       </div>
       <div>
-        <input type="submit" value="Submit" class="u-full-width" id="button">
+        <input type="submit" value="Submit" class="u-full-width" id="button" class="button-primary">
       </div>
     </form>
     <div>
@@ -30,8 +37,7 @@
     <table class="u-full-width">
       <thead>
         <tr>
-          <th>Transcript</th>
-          <th><button style="float:right" id="button2" type="button">Show Youtube Video</button></th>
+          <th>Transcript<button style="float:right" id="button2" type="button" class="button-primary">Show Youtube Video</button></th>
         </tr>
       </thead>
       <tbody id="transcript"></tbody>
