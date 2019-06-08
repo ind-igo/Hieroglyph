@@ -30,6 +30,13 @@ function showTranscript(data) {
     tbody.innerHTML = data;
 };
 
+function clearTranscriptError(errorMsg) {
+  //select tbody for DOM manipulation
+  const tbody = document.querySelector('tbody');
+  errorMsg = "There is an error in your Youtube URL"
+  tbody.innerHTML = errorMsg;
+};
+
 //show video and move state +1
 function showVideo(url_) {
     let iframe = document.getElementById('youtubeiframe');
@@ -55,36 +62,35 @@ function hideVideo() {
 
 function showError(){
   document.getElementById('youtube-url').style.color ="red";
-  document.getElementById('button').style.color ="red";
 }
 
 //declare button state
 let buttonState = 0;
+let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
 
 
 
 //create event listener for button
 document.getElementById('button').addEventListener('click', function(e){
-    let url = document.getElementById('youtube-url').value;
-    urlJson = {
-        'url' : url
-    }
-        //post to AWS API - it takes in url as json and outputs text of video
-    postApi('https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe', urlJson)
-        .then(data => showTranscript(data.body))
-        .catch(err => console.log(err));
-    
-
-    e.preventDefault();
+      let url = document.getElementById('youtube-url').value;
+      if(youtubeRe.test(url) === false){
+        showError();
+        clearTranscriptError();
+      } else{
+        urlJson = {
+          'url' : url
+      }
+          //post to AWS API - it takes in url as json and outputs text of video
+      postApi('https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe', urlJson)
+          .then(data => showTranscript(data.body))
+          .catch(err => console.log(err));
+          document.getElementById('youtube-url').style.color ="";
+          document.getElementById('button').style.color =""
+      }
+      
+      e.preventDefault();
 });
 
-// let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
-// let regexState = youtubeRe.test(document.getElementById('youtube-url').value);
-// console.log(regexState);
-
-// if (regexState === false) {
-//   showError()
-// } 
 
 
 //second button that inserts youtube url into the dom.... 
