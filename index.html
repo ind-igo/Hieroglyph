@@ -33,29 +33,34 @@
 </head>
 <body>
   <div class="container">
-    <h2 style="text-align:center;">Hieroglyph</h2>
+    <h1 style="text-align:center;">Hieroglyph</h1>
     <div class="wrapper">
-        <p class="u-full-width">Insert Youtube video url below, click submit, then the transcript will appear below</p>
+        <p class="u-full-width">YouTube Video Transcriber</p>
     </div>
     <form id="url-form">
       <div>
         <input type="text" id="youtube-url" placeholder="Insert YouTube URL" class="u-full-width">
       </div>
       <div>
-        <input type="submit" value="Submit" class="u-full-width" id="button" class="button-primary">
+        <input type="submit" value="Submit" class="u-full-width" id="submit-button">
       </div>
     </form>
     <div id="wrapper">
-        <iframe src="" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <iframe name="video-frame" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
     </div>
     <table class="u-full-width">
       <thead>
         <tr>
-          <th>Transcript<button style="float:right" id="button2" type="button" class="button-primary">Show Youtube Video</button></th>
+          <th>
+            Transcript
+          </th>
+          <th>
+            <button style="float:right" id="button2" type="button">Show Youtube Video</button>
+          </th>
         </tr>
       </thead>
-      <tbody id="transcript"></tbody>
     </table>
+    <div id="transcript"></div>
   </div>
   <script src="app.js"></script>
 </body>

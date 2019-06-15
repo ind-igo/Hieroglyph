@@ -1,3 +1,8 @@
+// Globals
+let videoVisible = false;
+let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
+
+
 // Make an HTTP POST Request
 async function postApi(url ='', data = {}) {
     const response = await fetch(url, {
@@ -10,97 +15,94 @@ async function postApi(url ='', data = {}) {
     return resData;
 };
 
-function getVideoId(url_){
-    var ID = '';
+function getVideoId(url_) {
+  let ID = '';
   url_ = url_.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+
   if(url_[2] !== undefined) {
     ID = url_[2].split(/[^0-9a-z_\-]/i);
     ID = ID[0];
-}
-  else {
+  } else {
     ID = url_;
-    }
-    return ID;
+  }
+  return ID;
 }
 
-//Function that shows the transcript once fetched
-function showTranscript(data) {
-    //select tbody for DOM manipulation
-    const tbody = document.querySelector('tbody');
-    tbody.innerHTML = data;
+function showTranscript(data_) {
+    const transcriptArea = document.getElementById('transcript');
+    transcriptArea.innerHTML = data_;
 };
 
-function clearTranscriptError(errorMsg) {
-  //select tbody for DOM manipulation
-  const tbody = document.querySelector('tbody');
-  errorMsg = "There is an error in your Youtube URL"
-  tbody.innerHTML = errorMsg;
+function clearTranscriptError() {
+  const transcriptArea = document.getElementById('transcript');
+  const errorMsg = "There is an error in your Youtube URL";
+  transcriptArea.innerHTML = errorMsg;
 };
 
-//show video and move state +1
 function showVideo(url_) {
-    let iframe = document.getElementById('youtubeiframe');
-    let rightUrl = getVideoId(url_)
-    //this is all stuff to mimic the Youtube Embed format
-    iframe.src = `https://www.youtube.com/embed/${rightUrl}`
-    iframe.frameBorder = '0'
+  let iframe = document.getElementById('youtubeiframe');
+  let rightUrl = getVideoId(url_);
+
+    // Required for YouTube iframe to work
+    iframe.src = `https://www.youtube.com/embed/${rightUrl}`;
+    iframe.frameBorder = '0';
     iframe.width = '500';
     iframe.height = '316';
     iframe.margin = 'auto';
     iframe.style.display = 'inline-block';
-    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-    document.getElementById('button2').innerText = "Hide Youtube Video"
-    buttonState += 1;
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    document.getElementById('button2').innerText = "Hide Youtube Video";
 }
-//hide video and move state down 1
+
 function hideVideo() {
   let iframe = document.getElementById('youtubeiframe');
   iframe.style.display = 'none';
-  document.getElementById('button2').innerText = "Show Youtube Video"
-  buttonState -= 1;
+  document.getElementById('button2').innerText = "Show Youtube Video";
 }
 
-function showError(){
-  document.getElementById('youtube-url').style.color ="red";
+function showError() {
+  document.getElementById('youtube-url').style.color = "red";
+  document.getElementById('youtube-url').style.borderColor = "red";
 }
 
-//declare button state
-let buttonState = 0;
-let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
+function toggleVideoButton() {
+  videoVisible = !videoVisible;
+}
 
+// ==================
+// Event Listeners
+// ==================
 
+// Fetch transcript on submit
+document.getElementById('submit-button').addEventListener('click', function(e){
+  let url = document.getElementById('youtube-url').value;
+  if(youtubeRe.test(url) === false) {
+    showError();
+    clearTranscriptError();
+  } else {
+    urlJson = {
+      'url' : url
+    }
+    //post to AWS API - it takes in url as json and outputs text of video
+    postApi('https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe', urlJson)
+      .then(data => showTranscript(data.body))
+      .catch(err => console.log(err));
+    document.getElementById('youtube-url').style.color ="";
+    document.getElementById('youtube-url').style.borderColor = "#D1D1D1";
+    document.getElementById('submit-button').style.color ="";
+  }
 
-//create event listener for button
-document.getElementById('button').addEventListener('click', function(e){
-      let url = document.getElementById('youtube-url').value;
-      if(youtubeRe.test(url) === false){
-        showError();
-        clearTranscriptError();
-      } else{
-        urlJson = {
-          'url' : url
-      }
-          //post to AWS API - it takes in url as json and outputs text of video
-      postApi('https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe', urlJson)
-          .then(data => showTranscript(data.body))
-          .catch(err => console.log(err));
-          document.getElementById('youtube-url').style.color ="";
-          document.getElementById('button').style.color =""
-      }
-      
-      e.preventDefault();
+  e.preventDefault();
 });
 
-
-
-//second button that inserts youtube url into the dom.... 
+// Insert Youtube video and show/hide button
 document.getElementById('button2').addEventListener('click', function(e){
     let url = document.getElementById('youtube-url').value;
-    if (buttonState === 0){ 
-      showVideo(url);
+    if (videoVisible) {
+      hideVideo();
     } else {
-      hideVideo()
-    };
-    console.log(buttonState);
+      showVideo(url);
+    }
+    toggleVideoButton();
     e.preventDefault();
 });
