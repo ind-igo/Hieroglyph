@@ -3,6 +3,10 @@ let videoVisible = false;
 let youtubeRe = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
 
 
+// =========
+// Functions
+// =========
+
 // Make an HTTP POST Request
 async function postApi(url ='', data = {}) {
     const response = await fetch(url, {
@@ -69,9 +73,9 @@ function toggleVideoButton() {
   videoVisible = !videoVisible;
 }
 
-// ==================
+// ==========
 // Event Listeners
-// ==================
+// ==========
 
 // Fetch transcript on submit
 document.getElementById('submit-button').addEventListener('click', function(e){

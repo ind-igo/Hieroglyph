@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
   <style>
-    #wrapper{
+    .wrapper {
       text-align:center;
     }
     iframe {
@@ -15,53 +16,42 @@
       align-self: center;
       justify-self: center;
     }
-    tbody {
-      text-align:justify;
-    }
-    thead {
-      margin: auto;
-    }
     p {
       text-align: center;
       align-self: center;
       justify-self: center;
     }
-
+    #logo {
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
   </style>
   <title>Hieroglyph</title>
-
 </head>
+
 <body>
   <div class="container">
-    <h1 style="text-align:center;">Hieroglyph</h1>
     <div class="wrapper">
-        <p class="u-full-width">YouTube Video Transcriber</p>
+      <img id="logo" src="assets/logo.png">
+      <!-- <h5>Youtube Video Transcriber</h5> -->
     </div>
     <form id="url-form">
       <div>
         <input type="text" id="youtube-url" placeholder="Insert YouTube URL" class="u-full-width">
-      </div>
-      <div>
         <input type="submit" value="Submit" class="u-full-width" id="submit-button">
       </div>
     </form>
     <div id="wrapper">
       <iframe name="video-frame" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
     </div>
-    <table class="u-full-width">
-      <thead>
-        <tr>
-          <th>
-            Transcript
-          </th>
-          <th>
-            <button style="float:right" id="button2" type="button">Show Youtube Video</button>
-          </th>
-        </tr>
-      </thead>
-    </table>
+    <div style="padding-bottom: 30px;">
+      <h5 style="float: left;">Transcript</h5>
+      <button style="float:right;" id="button2" type="button">Show Youtube Video</button>
+    </div>
+    <hr>
     <div id="transcript"></div>
   </div>
   <script src="app.js"></script>
 </body>
+
 </html>
