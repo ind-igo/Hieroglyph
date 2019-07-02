@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="./index.css" />
+		<title>Hieroglyph</title>
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
-  <style>
-    .wrapper {
-      text-align:center;
-    }
-    iframe {
-      display:none;
-      /* margin:0 auto; */
-      align-self: center;
-      justify-self: center;
-    }
-    p {
-      text-align: center;
-      align-self: center;
-      justify-self: center;
-    }
-    #logo {
-      padding-top: 10px;
-      padding-bottom: 15px;
-    }
-  </style>
-  <title>Hieroglyph</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="wrapper">
-      <img id="logo" src="assets/logo.png">
-      <!-- <h5>Youtube Video Transcriber</h5> -->
-    </div>
-    <form id="url-form">
-      <div>
-        <input type="text" id="youtube-url" placeholder="Insert YouTube URL" class="u-full-width">
-        <input type="submit" value="Submit" class="u-full-width" id="submit-button">
-      </div>
-    </form>
-    <div id="wrapper">
-      <iframe name="video-frame" id="youtubeiframe" frameborder="0" width="900" height="560" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
-    </div>
-    <div style="padding-bottom: 30px;">
-      <h5 style="float: left;">Transcript</h5>
-      <button style="float:right;" id="button2" type="button">Show Youtube Video</button>
-    </div>
-    <hr>
-    <div id="transcript"></div>
-  </div>
-  <script src="app.js"></script>
-</body>
-
+	<body>
+		<div class="container">
+			<div class="wrapper">
+				<img id="logo" src="assets/logo.png" />
+				<!-- <h5>Youtube Video Transcriber</h5> -->
+			</div>
+			<form id="url-form">
+				<div>
+					<input
+						type="text"
+						id="youtube-url"
+						placeholder="Insert YouTube URL"
+						class="u-full-width"
+					/>
+					<input
+						type="submit"
+						value="Submit"
+						class="u-full-width"
+						id="submit-button"
+					/>
+				</div>
+			</form>
+			<div id="wrapper">
+				<iframe
+					name="video-frame"
+					id="youtubeiframe"
+					frameborder="0"
+					width="900"
+					height="560"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+				></iframe>
+			</div>
+			<div style="padding-bottom: 30px;">
+				<h5 style="float: left;">Transcript</h5>
+				<button style="float:right;" id="button2" type="button">
+					Show Youtube Video
+				</button>
+			</div>
+			<hr />
+			<div id="transcript"></div>
+		</div>
+		<script src="app.js"></script>
+	</body>
 </html>

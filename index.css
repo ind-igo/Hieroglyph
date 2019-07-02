@@ -1,0 +1,25 @@
+.wrapper {
+	text-align: center;
+}
+
+iframe {
+	border: 0px;
+	width: 500px;
+	height: 316px;
+	margin: auto;
+
+	display: none;
+	/* margin:0 auto; */
+	align-self: center;
+	justify-self: center;
+}
+
+p {
+	text-align: center;
+	align-self: center;
+	justify-self: center;
+}
+#logo {
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
