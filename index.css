@@ -4,12 +4,12 @@
 
 iframe {
 	border: 0px;
-	width: 500px;
-	height: 316px;
+	width: 900px;
+	height: 560px;
 	margin: auto;
 
+	/* display changes based on showVideo button */
 	display: none;
-	/* margin:0 auto; */
 	align-self: center;
 	justify-self: center;
 }

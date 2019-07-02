@@ -14,10 +14,13 @@
 
 	<body>
 		<div class="container">
-			<div class="wrapper">
+			<!-- Header -->
+			<header class="wrapper">
 				<img id="logo" src="assets/logo.png" />
 				<!-- <h5>Youtube Video Transcriber</h5> -->
-			</div>
+			</header>
+
+			<!-- Form for submitting video -->
 			<form id="url-form">
 				<div>
 					<input
@@ -34,22 +37,25 @@
 					/>
 				</div>
 			</form>
-			<div id="wrapper">
+
+			<!-- Display Video here -->
+			<div>
 				<iframe
 					name="video-frame"
 					id="youtubeiframe"
-					frameborder="0"
-					width="900"
-					height="560"
 					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-				></iframe>
+				>
+				</iframe>
 			</div>
+
+			<!-- Display transcript controls here -->
 			<div style="padding-bottom: 30px;">
 				<h5 style="float: left;">Transcript</h5>
 				<button style="float:right;" id="button2" type="button">
 					Show Youtube Video
 				</button>
 			</div>
+
 			<hr />
 			<div id="transcript"></div>
 		</div>
