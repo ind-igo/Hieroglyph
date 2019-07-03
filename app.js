@@ -44,7 +44,6 @@ function submitVideoHandler(e) {
 // Helper fuction for sending POST Request for transcript from AWS
 async function getTranscript(url) {
 	const awsUrl =
-		'https://3iy19oh41a.execute-api.us-east-1.amazonaws.com/test/transcribe';
 
 	const response = await fetch(awsUrl, {
 		method: 'POST',
