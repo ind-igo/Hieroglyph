@@ -1,0 +1,15 @@
+.video-frame__box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.video-frame {
+		width: 100%;
+		height: 480px;
+	}
+}
+
+.overflow {
+	height: 100%;
+	overflow-y: scroll;
+}
