@@ -2,16 +2,15 @@
 
 import { getSubtitles } from "youtube-captions-scraper";
 
-export async function getTranscript(video_url) {
+export async function getTranscript(videoId_) {
   let transcript;
 
   try {
-    const subtitles = await getSubtitles({videoID: video_url, lang: 'en'});
-    console.log(subtitles);
+    const subtitles = await getSubtitles({videoID: videoId_, lang: 'en'});
     transcript = formatSubtitles(subtitles);
-  } catch(err) {
+  } catch (err) {
     console.log(err);
-    transcript = "";
+    transcript = "No transcript available";
   }
 
   return transcript;

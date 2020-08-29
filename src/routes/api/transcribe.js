@@ -1,13 +1,8 @@
 // Create API endpoint here with Post function. Route will be /api
-import { getTranscript } from '../_services/transcriptor.js';
+import { getTranscript } from '../_services/youtube_transcriber.js';
 
-export async function post(req, res) {
-	const { video_url } = req.body;
-	console.log(" vidoe url is : " + video_url);
-	const transcript = await getTranscript(video_url);
-	console.log(transcript);
-
-	console.log("IM IN!!");
-
-	res.json({ transcript: transcript })
+export async function get(req, res) {
+	const videoId = req.query.v;
+	const transcript = await getTranscript(videoId);
+	res.json({ text: transcript })
 }

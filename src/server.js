@@ -14,7 +14,6 @@ express()
 		bodyParser.json(),
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
-		express.json(),
 		sapper.middleware()
 	)
 	.listen(PORT, err => {
