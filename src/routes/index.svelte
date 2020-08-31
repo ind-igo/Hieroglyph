@@ -1,8 +1,8 @@
 <script>
   "use strict";
+
   let videoUrl;
   let transcriptText;
-  //$: showTranscript = !!transcriptText;
 
   async function getTranscript(videoId_) {
     const apiUrl = "api/transcribe";
@@ -18,7 +18,6 @@
       const videoId = new URL(videoUrl).searchParams.get("v");
       const transcript = await getTranscript(videoId);
       transcriptText = transcript.text;
-      console.log("transcriptText is " + transcript.text);
     } catch (err) {
       // TODO return red error somewhere, maybe flash
       console.log("Please enter a valid URL");
@@ -30,9 +29,9 @@
   <title>Hieroglyph</title>
 </svelte:head>
 
+<!--
 <div class="flex justify-between text-sm text-grey-700">
   <div class="flex items-center">
-    <img src="logo_symbol.svg" alt="Home" />
     <a class="inline-block p-3">Home</a>
     <a class="inline-block p-3">About</a>
   </div>
@@ -40,20 +39,15 @@
     <a class="inline-block p-3">Follow Us</a>
   </div>
 </div>
+-->
 
-<div class="max-w-3xl mx-auto pt-20 divide-y-2 divide-gray-600">
-  <div class="pb-4">
-    <img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
-
-    <div class="border border-gray-200 rounded-md p-2 shadow text-xl relative">
-      <!-- TODO entire text box is not used for some reason. url not getting submitted -->
-      <form on:submit|preventDefault={submitVideoURL}>
-        <input
-          class="outline-none px-3"
-          type="text"
-          placeholder="Insert Youtube Link Here" />
-        <button class="absolute right-0 top-0 mt-4 mr-4">
-          <svg
+<div class="flex-col max-w-3xl mx-auto pt-20">
+  <img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
+  <form on:submit|preventDefault={submitVideoURL}>
+    <div class="flex border border-gray-300 rounded-md p-2 shadow text-lg">
+      <input bind:value={videoUrl} class="flex-1 outline-none px-2" type="text" placeholder="Insert Youtube Link Here" />
+      <button class="relative right-0 top-0 mx-1" type="submit">
+        <svg
             class="h-4 w-4 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -73,14 +67,14 @@
               M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
               s-17-7.626-17-17S14.61,6,23.984,6z" />
           </svg>
-        </button>
-      </form>
+      </button>
     </div>
-  </div>
+  </form>
 
+  <div class="pt-4"></div>
   {#if !!transcriptText}
-    <p>fjdksaljfkldsa</p>
-    <div>{transcriptText}</div>
+  <div class="border border-gray-300 rounded-md px-2 shadow">
+    {transcriptText}
+  </div>
   {/if}
-
 </div>
