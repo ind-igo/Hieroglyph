@@ -8,7 +8,7 @@ import * as sapper from '@sapper/server';
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-const app = express()
+const app = (module.exports = express())
 	.use(cors())
 	.use(bodyParser.json())
 	.use(
