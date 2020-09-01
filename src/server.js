@@ -8,10 +8,10 @@ import * as sapper from '@sapper/server';
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-export default express()
+const app = express()
+	.use(cors())
+	.use(bodyParser.json())
 	.use(
-		cors(),
-		bodyParser.json(),
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
 		sapper.middleware()
