@@ -1,7 +1,7 @@
 <script>
   "use strict";
 
-  let videoUrl;
+  let inputURL;
   let transcriptText;
 
   async function getTranscript(videoId_) {
@@ -12,15 +12,24 @@
   }
 
   async function submitVideoURL() {
-    console.log(videoUrl);
-    // TODO Test for youtube's share url: https://youtu.be/DORxM-QsUr0
+    // TODO regex does not take mobile links, and takes invalid youtube links
+    const ytRegex = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/
+
     try {
-      const videoId = new URL(videoUrl).searchParams.get("v");
-      const transcript = await getTranscript(videoId);
+      if (!ytRegex.test(inputURL)) throw 'Bad URL';
+
+      // Capture video ID from both regular link and share link
+      const videoURL = new URL(inputURL);
+      const videoID = videoURL.hostname.includes('youtu.be') ?
+        videoURL.pathname.substring(1) :
+        videoURL.searchParams.get('v');
+
+      const transcript = await getTranscript(videoID);
+      console.log(transcript);
       transcriptText = transcript.text;
     } catch (err) {
       // TODO return red error somewhere, maybe flash
-      console.log("Please enter a valid URL");
+      console.log("Please enter a valid URL: " + err);
     }
   }
 </script>
@@ -45,7 +54,7 @@
   <img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
   <form on:submit|preventDefault={submitVideoURL}>
     <div class="flex border border-gray-300 rounded-md p-2 shadow text-lg">
-      <input bind:value={videoUrl} class="flex-1 outline-none px-2" type="text" placeholder="Insert Youtube Link Here" />
+      <input bind:value={inputURL} class="flex-1 outline-none px-2" type="text" placeholder="Insert Youtube Link Here" />
       <button class="relative right-0 top-0 mx-1" type="submit">
         <svg
             class="h-4 w-4 fill-current"
