@@ -1,19 +1,29 @@
 // Transcriber. Grabs transcript from Youtube
 
-import { getSubtitles } from "youtube-captions-scraper";
+import { getSubtitles } from 'youtube-captions-scraper';
+import axios from 'axios';
+import qs from 'qs';
 
 export async function getTranscript(videoId_) {
-  let transcript;
+  let finalTranscript;
 
   try {
     const subtitles = await getSubtitles({videoID: videoId_, lang: 'en'});
-    transcript = formatSubtitles(subtitles);
-  } catch (err) {
+    const rawTranscript = formatSubtitles(subtitles);
+    // TODO replace with our own model
+    const punctuated = await axios.post(
+      'http://bark.phon.ioc.ee/punctuator',
+      qs.stringify({
+        text: rawTranscript
+      })
+    );
+    finalTranscript = punctuated.data.replace('\'S', '\'s'); // TODO not sure why this isnt working
+  } catch(err) {
     console.log(err);
-    transcript = "No transcript available";
+    finalTranscript = "No transcript available";
   }
 
-  return transcript;
+  return finalTranscript;
 }
 
 function formatSubtitles(subtitles) {
