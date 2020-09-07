@@ -8,8 +8,7 @@
 </script>
 
 <script>
-  import TranscriptDisplay from "../../components/TranscriptDisplay.svelte";
-  import TranscriptInputForm from "../../components/TranscriptInputForm.svelte";
+  import TranscriptInputForm from "../components/TranscriptInputForm.svelte";
 
   export let transcript;
 </script>

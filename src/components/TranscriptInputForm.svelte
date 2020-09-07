@@ -1,5 +1,4 @@
 <script>
-  import TranscriptDisplay from './TranscriptDisplay.svelte';
   import { goto } from '@sapper/app';
 
   let inputURL;
@@ -65,7 +64,3 @@
     </button>
   </div>
 </form>
-
-{#if !!transcriptText}
-<TranscriptDisplay transcriptText=transcriptText/>
-{/if}
