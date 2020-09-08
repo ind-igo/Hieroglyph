@@ -7,6 +7,6 @@
     <a class="inline-block p-3" rel="prefetch" href="/about">About</a>
 	</div>
   <div class="flex items-center pr-3">
-    <a class="inline-block p-3">Follow Us</a>
+    <a href="https://twitter.com/AerisVentures?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @AerisVentures</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </nav>
