@@ -32,7 +32,9 @@
   }
 </script>
 
-<img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
+<a rel="prefetch" href="/">
+  <img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
+</a>
 <form on:submit|preventDefault={submitVideoURL}>
   <div class="flex border border-gray-300 rounded-md p-2 shadow text-lg {inputBorder}">
     <input bind:value={inputURL} class="flex-1 outline-none px-2" type="text" placeholder="Insert Youtube Link Here" />
