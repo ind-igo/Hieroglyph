@@ -10,9 +10,9 @@ export async function getTranscript(videoId_) {
   try {
     const subtitles = await getSubtitles({videoID: videoId_, lang: 'en'});
     const rawTranscript = formatSubtitles(subtitles);
-    // TODO replace with our own model
+    // TODO replace with https address of own model
     const punctuated = await axios.post(
-      'http://bark.phon.ioc.ee/punctuator',
+      'http://206.189.162.188:80/EN',
       qs.stringify({
         text: rawTranscript
       })

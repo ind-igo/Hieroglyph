@@ -11,6 +11,7 @@ const dev = NODE_ENV === 'development';
 const app = (module.exports = express())
 	.use(cors())
 	.use(bodyParser.json())
+	.use(bodyParser.urlencoded({ extended: true }))
 	.use(
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
