@@ -23,8 +23,7 @@
         videoURL.searchParams.get('v');
 
       loading = true;
-      prefetch(`/transcribe?v=${videoID}`)
-        .then(() => goto(`/transcribe?v=${videoID}`));
+      goto(`/transcribe?v=${videoID}`);
     } catch (err) {
       invalidInput = true;
       console.log("Please enter a valid URL: " + err);
@@ -33,7 +32,7 @@
 </script>
 
 <a rel="prefetch" href="/">
-  <img class="mx-auto mb-6" src="logo_banner.svg" alt="Hieroglyph" />
+  <img class="mx-auto mb-6" src="/logo_banner.svg" alt="Hieroglyph" />
 </a>
 <form on:submit|preventDefault={submitVideoURL}>
   <div class="flex border border-gray-300 rounded-md p-2 shadow text-lg {inputBorder}">

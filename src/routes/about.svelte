@@ -10,6 +10,6 @@
   <div class="pt-20 text-xl space-y-3">
     <h1><strong>Frequently Asked Questions</strong></h1>
     <p class="underline">Q: Why doesn't my Youtube link work?</p>
-    <p class="text-right">Try using the Youtube share link (looks like youtu.be/...)</p>
+    <p>Try using the Youtube share link (looks like youtu.be/...)</p>
   </div>
 </span>

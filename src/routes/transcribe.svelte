@@ -1,9 +1,14 @@
 <script context="module">
   export async function preload({ params, query }) {
-    const videoID = query.v;
-    const res = await this.fetch(`/api/transcribe?v=${videoID}`);
-    const transcript = await res.json();
-    return { transcript }
+    try {
+      const videoID = query.v;
+      const res = await this.fetch(`/api/transcribe?v=${videoID}`);
+      const transcript = await res.json();
+      return { transcript }
+    }
+    catch(err) {
+      console.log(err)
+    }
   }
 </script>
 
@@ -17,5 +22,5 @@
 
 <div class="pt-4"></div>
 <div class="border border-gray-300 rounded-md px-2 shadow">
-  {transcript.text}
+  { transcript.text }
 </div>
