@@ -18,6 +18,10 @@
   export let transcript;
 </script>
 
+<svelte:head>
+	<title>Hieroglyph</title>
+</svelte:head>
+
 <TranscriptInputForm />
 
 <div class="pt-4"></div>
