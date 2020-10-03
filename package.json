@@ -11,7 +11,9 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "dev:docker:build": "docker build -t saadali93/hg-app:latest .",
+    "dev:docker:run": "docker run -d -p 3000:3000 saadali93/hg-app:latest"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
