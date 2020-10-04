@@ -3,6 +3,7 @@ FROM mhart/alpine-node:14 AS build-app
 WORKDIR /app
 COPY . .
 RUN npm install --no-audit --unsafe-perm
+RUN npm run build:tailwind
 RUN npm run build
 
 # This stage installs the runtime dependencies.
