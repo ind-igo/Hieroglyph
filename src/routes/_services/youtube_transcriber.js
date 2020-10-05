@@ -11,6 +11,7 @@ export async function getTranscript(videoId_) {
     const subtitles = await getSubtitles({videoID: videoId_, lang: 'en'});
     const rawTranscript = formatSubtitles(subtitles);
     // TODO replace with https address of own model
+    // TODO Push to queue to be transcribed, return "ok" immediately
     const punctuated = await axios.post(
       'http://206.189.162.188:80/EN',
       qs.stringify({
