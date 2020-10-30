@@ -12,7 +12,7 @@
     <a class="inline-block p-3" rel="prefetch" href="/about">About</a>
 	</div>
   <div class="flex items-center pr-3">
-    <a href="https://twitter.com/AerisVentures">
+    <a href="https://twitter.com/HieroglyphApp">
       <Icon data={twitter} class="mr-3 mt-3 h-6 w-6" />
     </a>
   </div>
