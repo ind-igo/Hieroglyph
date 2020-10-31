@@ -4,5 +4,7 @@
 yarn-error.log
 /cypress/screenshots/
 /__sapper__/
+/static/global.css
+/static/index.css
 
 .env

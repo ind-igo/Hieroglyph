@@ -1,9 +1,6 @@
 <script>
   import Icon from 'svelte-awesome/components/Icon.svelte';
   import { twitter } from 'svelte-awesome/icons';
-
-  let showAbout = false;
-  let toggleAbout = () => showAbout = !showAbout;
 </script>
 
 <nav class="flex justify-between text-sm">

@@ -4,6 +4,8 @@ import { getSubtitles } from 'youtube-captions-scraper';
 import axios from 'axios';
 import qs from 'qs';
 
+const { HG_PUNCTUATOR_URL } = process.env;
+
 export async function getTranscript(videoId_) {
   let finalTranscript;
 
@@ -13,7 +15,7 @@ export async function getTranscript(videoId_) {
     // TODO replace with https address of own model
     // TODO Push to queue to be transcribed, return "ok" immediately
     const punctuated = await axios.post(
-      'http://206.189.162.188:80/EN',
+      HG_PUNCTUATOR_URL,
       qs.stringify({
         text: rawTranscript
       })

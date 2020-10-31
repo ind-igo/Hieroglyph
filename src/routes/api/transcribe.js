@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 import { getTranscript } from '../_services/youtube_transcriber.js';
 
 const S3 = new AWS.S3({ apiVersion: '2006-03-01' });
-const BUCKET_NAME = 'hg-transcripts';
+const { BUCKET_NAME } = process.env;
 
 export async function get(req, res) {
   const videoId = req.query.v;
