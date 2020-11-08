@@ -6,4 +6,8 @@
   <title>Hieroglyph</title>
 </svelte:head>
 
-<TranscriptInputForm />
+<a rel="prefetch" href="/">
+  <img class="mx-auto mb-6" src="/logo_banner.svg" alt="Hieroglyph" />
+</a>
+<div class="p-2">
+<TranscriptInputForm /></div>

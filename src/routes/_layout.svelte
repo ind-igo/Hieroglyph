@@ -1,5 +1,6 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+  //import HomeNav from '../components/HomeNav.svelte';
+  import Nav from '../components/Nav.svelte'
 </script>
 
 <main>
