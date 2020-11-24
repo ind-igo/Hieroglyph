@@ -7,8 +7,6 @@ import qs from 'qs';
 const { HG_PUNCTUATOR_URL } = process.env;
 
 export async function getTranscript(videoId_) {
-  let finalTranscript;
-
   try {
     const subtitles = await getSubtitles({videoID: videoId_, lang: 'en'});
     const rawTranscript = formatSubtitles(subtitles);
@@ -20,13 +18,12 @@ export async function getTranscript(videoId_) {
         text: rawTranscript
       })
     );
-    finalTranscript = punctuated.data.replace('\'S', '\'s'); // TODO not sure why this isnt working
+    let finalTranscript = punctuated.data.replace('\'S', '\'s'); // TODO not sure why this isnt working
+    return Promise.resolve(finalTranscript);
   } catch(err) {
     console.log(err);
-    finalTranscript = "No transcript available";
+    return Promise.reject('No Transcript Available.');
   }
-
-  return finalTranscript;
 }
 
 function formatSubtitles(subtitles) {

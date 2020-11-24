@@ -39,19 +39,24 @@ export async function get(req, res) {
   }
   else {
     // TODO Get ok from transcriber and return 202
-    transcript = await getTranscript(videoId);
+    try {
+      transcript = await getTranscript(videoId);
 
-    S3.putObject({
-      Bucket: BUCKET_NAME,
-      Key: videoId,
-      Body: transcript,
-      ContentType: 'application/text; charset=utf-8',
-      CacheControl: 'max-age=86400'
-    })
-      .promise()
-      .then(() => console.log('Transcript successfully uploaded'))
-      .catch(err => console.log(err));
+      S3.putObject({
+        Bucket: BUCKET_NAME,
+        Key: videoId,
+        Body: transcript,
+        ContentType: 'application/text; charset=utf-8',
+        CacheControl: 'max-age=86400'
+      })
+        .promise()
+        .then(() => console.log(`Transcript ${videoId} successfully uploaded`))
+        .catch(err => console.log(err));
+    }
+    catch {
+      transcript = "No Transcript is available. If the video is brand new, it is likely Youtube has not transcribed the video yet. Try again at a later time."
+    }
   }
 
-  res.json({ text: transcript })
+  res.json({ text: transcript });
 }
