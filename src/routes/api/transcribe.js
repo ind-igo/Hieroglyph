@@ -23,6 +23,7 @@ export async function get(req, res) {
       throw err;
     });
 
+  let success;
   let transcript;
 
   if(presentInS3) {
@@ -36,6 +37,8 @@ export async function get(req, res) {
         console.log(err);
         return 'No transcript retrieved. Something is wrong.'
       });
+
+    success = true;
   }
   else {
     // TODO Get ok from transcriber and return 202
@@ -52,11 +55,17 @@ export async function get(req, res) {
         .promise()
         .then(() => console.log(`Transcript ${videoId} successfully uploaded`))
         .catch(err => console.log(err));
+
+      success = true;
     }
     catch {
       transcript = "No Transcript is available. If the video is brand new, it is likely Youtube has not transcribed the video yet. Try again at a later time."
+      success = false;
     }
   }
 
-  res.json({ text: transcript });
+  res.json({
+    success: success,
+    text: transcript
+  });
 }
