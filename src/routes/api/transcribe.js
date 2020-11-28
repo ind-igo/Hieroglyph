@@ -59,7 +59,7 @@ export async function get(req, res) {
       success = true;
     }
     catch {
-      transcript = "No Transcript is available. If the video is brand new, it is likely Youtube has not transcribed the video yet. Try again at a later time."
+      transcript = "No transcript available. If the video is brand new, it is likely Youtube has not transcribed the video yet. Try again at a later time."
       success = false;
     }
   }
