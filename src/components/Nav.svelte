@@ -10,7 +10,7 @@
   </div>
   <button type="button" class="p-3">
     <a href="https://us7.list-manage.com/survey?u=0690d6b292d96a936376ab614&id=5eb8b1ef9a">
-      Take this survey and help us improve Hieroglyph 😁
+      Please consider leaving feedback so we can improve Hieroglyph 🙂
     </a>
   </button>
   <div class="flex items-center pr-3">

@@ -1,5 +1,5 @@
 <script>
-  import { prefetch, goto } from '@sapper/app';
+  import { goto } from '@sapper/app';
   import Icon from 'svelte-awesome/components/Icon.svelte';
   import { spinner, search } from 'svelte-awesome/icons';
 
