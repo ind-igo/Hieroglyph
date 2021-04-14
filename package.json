@@ -16,7 +16,7 @@
     "dev:docker:run": "docker run -d -p 3000:3000 saadali93/hg-app:latest"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@fullhuman/postcss-purgecss": "^3.1.0",
     "aws-sdk": "^2.783.0",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
