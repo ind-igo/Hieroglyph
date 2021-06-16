@@ -9,7 +9,7 @@ export async function get(req, res) {
   const videoId = req.query.v;
 
   // Check in S3 for transcript by video ID
-  const presentInS3 = await S3.headObject({
+  let presentInS3 = await S3.headObject({
     Bucket: BUCKET_NAME,
     Key: videoId
   })
@@ -26,6 +26,7 @@ export async function get(req, res) {
   let success;
   let transcript;
 
+  presentInS3 = false;
   if(presentInS3) {
     transcript = await S3.getObject({
       Bucket: BUCKET_NAME,
@@ -45,16 +46,16 @@ export async function get(req, res) {
     try {
       transcript = await getTranscript(videoId);
 
-      S3.putObject({
-        Bucket: BUCKET_NAME,
-        Key: videoId,
-        Body: transcript,
-        ContentType: 'application/text; charset=utf-8',
-        CacheControl: 'max-age=86400'
-      })
-        .promise()
-        .then(() => console.log(`Transcript ${videoId} successfully uploaded`))
-        .catch(err => console.log(err));
+    //S3.putObject({
+    //  Bucket: BUCKET_NAME,
+    //  Key: videoId,
+    //  Body: transcript,
+    //  ContentType: 'application/text; charset=utf-8',
+    //  CacheControl: 'max-age=86400'
+    //})
+    //  .promise()
+    //  .then(() => console.log(`Transcript ${videoId} successfully uploaded`))
+    //  .catch(err => console.log(err));
 
       success = true;
     }

@@ -8,11 +8,6 @@
     <a class="inline-block p-3" rel="prefetch" href="/">Home</a>
     <a class="inline-block p-3" rel="prefetch" href="/about">About</a>
   </div>
-  <button type="button" class="p-3">
-    <a href="https://us7.list-manage.com/survey?u=0690d6b292d96a936376ab614&id=5eb8b1ef9a">
-      Please consider leaving feedback so we can improve Hieroglyph 🙂
-    </a>
-  </button>
   <div class="flex items-center pr-3">
     <a href="https://twitter.com/HieroglyphApp">
       <Icon data={twitter} class="mr-3 mt-3 h-6 w-6" />

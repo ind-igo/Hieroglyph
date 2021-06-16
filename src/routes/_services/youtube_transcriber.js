@@ -12,12 +12,14 @@ export async function getTranscript(videoId_) {
     const rawTranscript = formatSubtitles(subtitles);
     // TODO replace with https address of own model
     // TODO Push to queue to be transcribed, return "ok" immediately
+    console.time()
     const punctuated = await axios.post(
       HG_PUNCTUATOR_URL,
       qs.stringify({
         text: rawTranscript
       })
     );
+    console.timeEnd()
     let finalTranscript = punctuated.data.replace('\'S', '\'s'); // TODO not sure why this isnt working
     return Promise.resolve(finalTranscript);
   } catch(err) {
