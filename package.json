@@ -25,7 +25,7 @@
     "express": "latest",
     "qs": "^6.9.4",
     "sirv": "^1.0.7",
-    "svelte-awesome": "^2.3.0",
+    "svelte-awesome": "^2.4.2",
     "youtube-captions-scraper": "^1.0.3"
   },
   "devDependencies": {
