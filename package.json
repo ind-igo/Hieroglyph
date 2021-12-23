@@ -24,7 +24,7 @@
     "cors": "^2.8.5",
     "express": "latest",
     "qs": "^6.9.4",
-    "sirv": "^1.0.7",
+    "sirv": "^1.0.19",
     "svelte-awesome": "^2.3.0",
     "youtube-captions-scraper": "^1.0.3"
   },
